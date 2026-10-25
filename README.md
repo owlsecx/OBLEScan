@@ -18,13 +18,18 @@
 
 ## 📌 Overview
 
-OBLEScan is a security and privacy tool from the OwlSec suite.
+OBLEScan analyzes Bluetooth LE captures (pcap/pcapng of HCI or advertising frames) you have already collected. It lists every advertising device, decodes its advertising data, company ID and service UUIDs, and classifies the device type. It flags privacy and tracking exposure such as static addresses. It reads captures only and does not scan, connect to or transmit on any radio.
 
 ---
 
 ## ✨ Features
 
-- Standalone executable, no Python installation needed.
+- BLE advertisement parser: AD structures, company IDs, 16-bit service UUIDs, address type and Apple subtypes
+- Device enumeration and classification
+- Privacy and tracking exposure flags
+- Offline synthetic BLE capture generator (no radio)
+- Findings graded A+ to F with MITRE ATT&CK mapping
+- Reports in TXT / JSON / Markdown / CSV / SARIF; exits with code 3 on CRITICAL/HIGH findings
 
 ---
 
@@ -38,8 +43,13 @@ OBLEScan is a security and privacy tool from the OwlSec suite.
 ## 🚀 Usage
 
 ```bash
-./OBLEScan
+./OBLEScan                                   # interactive menu
+./OBLEScan --analyze ble_capture.pcapng
+./OBLEScan --generate --out synth.pcap
+./OBLEScan --demo
 ```
+
+Run `./OBLEScan --help` for the full list of options.
 
 ---
 
